@@ -17,11 +17,13 @@ require("lazy").setup({
   { "neovim/nvim-lspconfig" },
   { "hrsh7th/nvim-cmp" },
   { "hrsh7th/cmp-nvim-lsp" },
+  { "windwp/nvim-autopairs" },
   { "L3MON4D3/LuaSnip" },
   { "saadparwaiz1/cmp_luasnip" },
+  { 'wakatime/vim-wakatime', lazy = false }
 })
 
-
+require('nvim-autopairs').setup{}
 local lspconfig = require('lspconfig')
 
 -- Setup pyright for Python
@@ -41,7 +43,7 @@ cmp.setup({
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
   }),
   sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
+    { name = 'nvim_lsp' }, 
     { name = 'luasnip' },
   })
 })
