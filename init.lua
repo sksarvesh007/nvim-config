@@ -20,6 +20,11 @@ require("lazy").setup({
   { "windwp/nvim-autopairs" },
   { "L3MON4D3/LuaSnip" },
   { "saadparwaiz1/cmp_luasnip" },
+  {
+  "nvim-treesitter/nvim-treesitter",
+  build = ":TSUpdate",
+  },
+
   { 'wakatime/vim-wakatime', lazy = false }, 
   {
     "nvim-tree/nvim-tree.lua",
