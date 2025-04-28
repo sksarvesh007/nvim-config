@@ -20,11 +20,51 @@ require("lazy").setup({
   { "windwp/nvim-autopairs" },
   { "L3MON4D3/LuaSnip" },
   { "saadparwaiz1/cmp_luasnip" },
-  { 'wakatime/vim-wakatime', lazy = false }
+  { 'wakatime/vim-wakatime', lazy = false }, 
+  {
+    "nvim-tree/nvim-tree.lua",
+    dependencies = { "nvim-tree/nvim-web-devicons" }, -- for file icons
+    version = "*",
+    lazy = false,
+    config = function()
+      require("nvim-tree").setup({
+        sort_by = "case_sensitive",
+        view = {
+          width = 30,
+        },
+        renderer = {
+          group_empty = true,
+          icons = {
+            show = {
+              file = true,
+              folder = true,
+              folder_arrow = true,
+              git = true,
+            },
+          },
+        },
+        filters = {
+          dotfiles = false,
+        },
+        git = {
+          enable = true,
+          ignore = false,
+        },
+      })
+      
+      -- Key mappings to toggle the file explorer
+      vim.keymap.set('n', '<C-n>', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
+    end,
+  },
+
 })
 
 require('nvim-autopairs').setup{}
 local lspconfig = require('lspconfig')
+
+vim.opt.number = true
+vim.opt.relativenumber = true
+
 
 -- Setup pyright for Python
 lspconfig.pyright.setup{}
