@@ -24,7 +24,6 @@ require("lazy").setup({
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
   },
-
   { 'wakatime/vim-wakatime', lazy = false }, 
   {
     "nvim-tree/nvim-tree.lua",
